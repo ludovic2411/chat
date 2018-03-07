@@ -4,7 +4,7 @@ session_start ();
 //Connection à la db...
 
 try {
-  $bd = new PDO('mysql:host=localhost;dbname=chat;charset=utf8', 'root', 'user');
+  $bd = new PDO('mysql:host=localhost;dbname=chat;charset=utf8', 'root', 'root');
 } catch (Exception $e) {
   // En cas d'erreur, on affiche un message et on arrête tout
   die('Erreur : '.$e->getMessage());
@@ -21,10 +21,12 @@ if (isset($_POST['logout'])) {//si on appuie sur le bouton pour se déconnecter
   // On redirige le visiteur vers la page d'accueil
   header ('location: login.php');
 }
+echo $_SESSION['login'];
 $date_message=date("m-d-H-i");//récuprèrer la date...
 if (isset($_POST['send'])) {//Si on appuie sur "envoyer"
-  $id_users=$bd->query("SELECT id from users where pseudo='".$_SESSION['login']."'");
+  $id_users=$bd->query("SELECT id FROM users WHERE pseudo='".$_SESSION['login']."'");
   $id_users_fetch=$id_users->fetch();
+  echo $id_users_fetch;
   $message_sent=$bd->exec("INSERT INTO message(id_users,message, date_message) VALUES('".$id_users_fetch."','".$_POST['message']."','".$date_message."')");//ON envoie le message dans la db avec sa date
   echo $_POST['message'];
 }else{echo "naniiii!!!!";}
