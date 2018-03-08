@@ -17,7 +17,7 @@ function sanitize($key, $filter=FILTER_SANITIZE_STRING){
 }
 //Connection à la db...
 try {
-  $bd = new PDO('mysql:host=localhost;dbname=chat;charset=utf8', 'root', 'root');
+  $bd = new PDO('mysql:host=localhost;dbname=chat;charset=utf8', 'root', 'user');
 } catch (Exception $e) {
   // En cas d'erreur, on affiche un message et on arrête tout
   die('Erreur : '.$e->getMessage());
@@ -67,7 +67,7 @@ if (isset($_POST['name_login']) AND isset($_POST['password_login']) AND isset($_
     avant de rejoindre le chat</h2>
     <form class="register" action="login.php" method="post">
       <input type="text" name="name" value="" placeholder="introduisez votre pseudo" required><br>
-      <input type="text" name="email" value="" placeholder="mailexemple@mail.com" required><br>
+      <input type="email" name="email" value="" placeholder="mailexemple@mail.com" required><br>
       <input type="password" name="password" value="" placeholder="choisissez un mot de passe" required><br>
       <input type="submit" name="submit_register" value="Envoyer">
       <input type="reset" name="reset_register" value="Annuler">
