@@ -1,0 +1,64 @@
+body{
+  background-color: #0050EF;
+}
+.header{
+  color: #fffaf0;
+}
+.header h1{
+  text-align: center;
+  font-size: 400%;
+}
+.title li{
+  display: inline;
+  float: left;
+  font-size: 120%;
+  
+}
+.nav li{
+  display: inline;
+  float:right;
+  margin-right: 100px;
+}
+.wrapper{
+  width: 700px;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  color: #fffaf0;
+  border:solid 5px #fffaf0;
+  border-radius: 50px;
+}
+.wrapper h2{
+  margin-left: 200px;
+}
+.wrapper h3{
+ margin-left: 200px;
+}
+.wrapper input{
+ margin-bottom:20px;
+}
+.name_register{
+  margin-left: 200px;
+}
+.wrapper input{
+  margin-bottom: 20px;
+}
+.email_register{
+  margin-left: 200px;
+}
+.name_register_class{
+  margin-left:200px;
+}
+.password_register{
+  margin-left: 200px;
+}
+.name_login_class{
+  margin-left: 200px;
+}
+.password_login{
+  margin-left: 200px;
+}
+.submit_login_class{
+  margin-left: 200px;
+}

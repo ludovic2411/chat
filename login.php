@@ -24,9 +24,9 @@ try {
 }
 if (isset($_POST['submit_register'])) {//Si on appuie sur le bouton envoyer...
   $nom=sanitize($_POST['name']);//on récupère le nom...
-  $email=sanitize($_POST['email']); //On récupère le mail
+  $email=sanitize($_POST['email'], FILTER_SANITIZE_EMAIL); //On récupère le mail
   $password=sanitize($_POST['password']);//On récupère le pwd
- $safe_password=password_hash($password, PASSWORD_DEFAULT);//on crypte le pwd
+  $safe_password=password_hash($password, PASSWORD_DEFAULT);//on crypte le pwd
   //insertion des données de l'user dans la table user...
   $user_data=$bd->exec("INSERT INTO users(pseudo,email, password) VALUES ('".$nom."','".$email."', '".$safe_password."') ");
 }
@@ -34,7 +34,7 @@ if (isset($_POST['submit_register'])) {//Si on appuie sur le bouton envoyer...
 
 $infos_valides=$bd->query("SELECT pseudo, password FROM users WHERE pseudo='".$_POST['name_login']."'"); //On déclare les pseudos déjà enregistrés dans la db
 $infos_valides_fetch=$infos_valides->fetch();
- $password_verify=password_verify($_POST['password_login'],$infos_valides_fetch['password']);//on décrypte les pwd...
+$password_verify=password_verify($_POST['password_login'],$infos_valides_fetch['password']);//on décrypte les pwd...
 // $loginalides="ludovic2411";
 // $password_valides="zorglub69";
 //on teste si nos variables sont définies
@@ -59,29 +59,71 @@ if (isset($_POST['name_login']) AND isset($_POST['password_login']) AND isset($_
 <html>
 <head>
   <meta charset="utf-8">
+  <link rel="stylesheet" href="login-style.css">
+  <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
   <title>Login</title>
 </head>
 <body>
-  <h1>Bienvenue</h1>
-  <h2>Veuillez introduire vos coordonnées<br>
-    avant de rejoindre le chat</h2>
-    <form class="register" action="login.php" method="post">
-      <input type="text" name="name" value="" placeholder="introduisez votre pseudo" required><br>
-      <input type="email" name="email" value="" placeholder="mailexemple@mail.com" required><br>
-      <input type="password" name="password" value="" placeholder="choisissez un mot de passe" required><br>
-      <input type="submit" name="submit_register" value="Envoyer">
-      <input type="reset" name="reset_register" value="Annuler">
-    </form>
-<h3>Energistré?</h3>
-<a href="http://localhost/chat/login.php">Connectez vous</a>
-  <h1>Connectez-vous</h1>
-  <h2>Entrez votre nom d'utilisateur <br>
-    et votre mot de passe</h2>
-    <form class="" action="login.php" method="post">
-      <input type="text" name="name_login" placeholder="inscrivez votre nom d'utilisateur" required value=""><br>
-      <input type="password" name="password_login"  placeholder="inscrivez votre mot de passe"required value=""><br>
-      <input type="submit" name="submit_login" value="Connection">
-      <input type="reset" name="reset_login" value="Annuler">
-    </form>
-  </body>
-  </html>
+  <header class="header">
+    <h1><i class="fas fa-rocket">Bienvenue sur Fuzee</i></h1>
+    <nav>
+      <ul class="title">
+        <li><b>Le nouveau media rapide,sécurisé et gratuit</b></li>
+      </ul>
+      <ul class="nav">
+        <li>About us</li>
+        <li>Privacy</li>
+        <li>FAQ</li>
+        <li>Help</li>
+        <li>Getting started</li>
+      </ul>
+    </nav>
+  </header>
+  <br>
+  <section class="wrapper">
+    <section class="register">
+      <h2>Veuillez introduire <br> vos coordonnées<br>
+        avant de rejoindre <br> le chat</h2>
+        <form class="" action="login.php" method="post">
+          <input class="name_register" type="text" name="name" value="" placeholder="introduisez votre pseudo" required><br>
+          <input class="email_register" type="email" name="email" value="" placeholder="mailexemple@mail.com" required><br>
+          <input class="password_register" type="password" name="password" value="" placeholder="choisissez un mot de passe" required><br>
+          <input class="name_register_class" type="submit" name="submit_register" value="Envoyer">
+          <input class="reset_register" type="reset" name="reset_register" value="Annuler">
+        </form>
+      </section>
+      <section class="login">
+        <h2>Enregistré?</h2>
+        <h2>Connectez-vous</h2>
+        <h3>Entrez votre nom d'utilisateur<br>
+          et votre mot de passe</h3>
+          <form action="login.php" method="post">
+            <input class="name_login_class" type="text" name="name_login" placeholder="inscrivez votre nom d'utilisateur" required value=""><br>
+            <input class="password_login" type="password" name="password_login"  placeholder="inscrivez votre mot de passe"required value=""><br>
+            <input class="submit_login_class" type="submit" name="submit_login" value="Connection">
+            <input class="reset_login" type="reset" name="reset_login" value="Annuler">
+          </form>
+        </section>
+      </section>
+      <footer class="footer">
+        <ul>
+          <li>Generals</li>
+          <li>About us</li>
+          <li>Privacy</li>
+          <li>FAQ</li>
+          <li>Help</li>
+          <li>Getting started</li>
+        </ul>
+        <ul>
+          <li>Fuzee for business</li>
+          <li>B2B</li>
+          <li>Advertise</li>
+        </ul>
+        <ul>
+          <li>Careers</li>
+          <li>Jobs</li>
+          <li>Working for Fuzee</li>
+        </ul>
+      </footer>
+    </body>
+    </html>
