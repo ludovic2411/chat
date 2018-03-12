@@ -1,0 +1,75 @@
+body{
+  background-color: #0050EF;
+}
+.header{
+  color: #fffaf0;
+}
+.header h1{
+  text-align: center;
+  font-size: 400%;
+}
+.title li{
+  display: inline;
+  float: left;
+  font-size: 120%;
+
+}
+.nav li{
+  display: inline;
+  float:right;
+  margin-right: 100px;
+}
+hr{
+  color: #fffaf0;
+}
+.infos{
+  width: 500px;
+  height:auto;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #fffaf0;
+  border:solid 5px #fffaf0;
+  border-radius: 50px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2,1fr);
+  grid-template-areas:
+  "image infos_texte"
+  "modif_données .";
+}
+.image{
+margin-left: 20px;
+margin-top: 20px;
+}
+.infos_texte{
+text-align: left;
+margin-top: 10px;
+}
+.infos_texte ul{
+  list-style: none;
+}
+.modif_données{
+text-align: left;
+margin-bottom: 20px;
+margin-left: 20px;
+}
+.footer {
+  width: 700Px;
+  margin-left: auto;
+  margin-right: auto;
+display: grid;
+grid-template-columns: repeat(3,1fr);
+grid-template-rows: 120px;
+grid-template-areas:
+"col-1 col-2 col-3";
+}
+.footer ul{
+  color: #fffaf0;
+}
+.footer li{
+  list-style: none;
+}
+strong{
+  font-size: 110%;
+}
