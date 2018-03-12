@@ -1,6 +1,9 @@
 body{
   background-color: #0050EF;
 }
+hr{
+  color: #fffaf0;
+}
 .header{
   color: #fffaf0;
 }
@@ -12,7 +15,7 @@ body{
   display: inline;
   float: left;
   font-size: 120%;
-  
+
 }
 .nav li{
   display: inline;
@@ -61,4 +64,23 @@ body{
 }
 .submit_login_class{
   margin-left: 200px;
+}
+.footer {
+  width: 700Px;
+  margin-left: auto;
+  margin-right: auto;
+display: grid;
+grid-template-columns: repeat(3,1fr);
+grid-template-rows: 120px;
+grid-template-areas:
+"col-1 col-2 col-3";
+}
+.footer ul{
+  color: #fffaf0;
+}
+.footer li{
+  list-style: none;
+}
+strong{
+  font-size: 110%;
 }
